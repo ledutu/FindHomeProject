@@ -1,8 +1,7 @@
 <resources>
     <string name="app_name">FindHomeProject</string>
     <string name="title_home">Home</string>
-    <string name="title_location">Location</string>
-    <string name="title_message">Messages</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_search">Search</string>
+    <string name="title_favourite">Favourite</string>
     <string name="title_account">Account</string>
 </resources>

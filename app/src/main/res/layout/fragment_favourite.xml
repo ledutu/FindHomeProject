@@ -5,10 +5,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="30dp"
-        android:text="@string/title_notifications"
-        android:layout_gravity="center"/>
+    <ListView
+        android:id="@+id/lvMotelNews"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="5dp"/>
 </LinearLayout>

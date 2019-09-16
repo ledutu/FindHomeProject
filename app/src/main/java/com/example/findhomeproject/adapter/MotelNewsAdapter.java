@@ -2,6 +2,7 @@ package com.example.findhomeproject.adapter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.findhomeproject.R;
+import com.example.findhomeproject.intents.DetailMotel;
 import com.example.findhomeproject.modelForMotel.MotelNews;
 
 import java.util.List;
@@ -41,10 +43,23 @@ public class MotelNewsAdapter extends ArrayAdapter<MotelNews> {
         ImageView imgImage = row.findViewById(R.id.imgImage);
         LinearLayout lyMotelNews = row.findViewById(R.id.lyMotelNews);
 
-        MotelNews motelNews = this.objects.get(position);
+        final MotelNews motelNews = this.objects.get(position);
         imgImage.setImageResource(motelNews.getMotelImage());
         txtTitle.setText(motelNews.getMotelName());
         txtContent.setText(motelNews.getMotelAddress());
+        lyMotelNews.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goToDetailMotel(motelNews);
+            }
+        });
         return row;
+    }
+
+    private void goToDetailMotel(MotelNews motelNews) {
+        Intent intent = new Intent(getContext(), DetailMotel.class);
+        motelNews = new MotelNews(motelNews.getMotelName(), motelNews.getMotelAddress(), motelNews.getMotelImage());
+        intent.putExtra("MotelDetail", motelNews);
+        getContext().startActivity(intent);
     }
 }
