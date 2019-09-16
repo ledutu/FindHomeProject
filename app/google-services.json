@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "113897995",
+    "firebase_url": "https://findhomeproject.firebaseio.com",
+    "project_id": "findhomeproject",
+    "storage_bucket": "findhomeproject.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:113897995:android:bb8b471c9de69e68490d0e",
+        "android_client_info": {
+          "package_name": "com.example.findhomeproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "113897995-u7qoa5h637v68h7ia9f1bal0v3p14jp2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.findhomeproject",
+            "certificate_hash": "375ddfd1c2d04a947f4358476db5581d4bd18796"
+          }
+        },
+        {
+          "client_id": "113897995-j6add283tos3jche86so7agc7obltatl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBT1F0Xm4z9gN2Ol-O270qXybc9dk5vrho"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "113897995-j6add283tos3jche86so7agc7obltatl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
