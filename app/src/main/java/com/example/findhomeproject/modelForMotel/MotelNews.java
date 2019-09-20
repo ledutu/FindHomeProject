@@ -6,38 +6,26 @@ import java.io.Serializable;
 
 public class MotelNews implements Serializable {
     private int motelCost;
+    private int motelImage;
     private String motelName;
     private String motelAddress;
+    private String phoneNumber;
     private String motelArea;
-    private String motelDetail;
     private String timePosting;
-    private int motelImage;
-    public MotelNews(int motelCost, int motelImage ,String motelAddress, String motelArea) {
+    private String motelDetail;
+
+    public MotelNews() {
+    }
+
+    public MotelNews(int motelCost, int motelImage, String motelName, String motelAddress, String phoneNumber, String motelArea, String timePosting, String motelDetail) {
         this.motelCost = motelCost;
         this.motelImage = motelImage;
+        this.motelName = motelName;
         this.motelAddress = motelAddress;
+        this.phoneNumber = phoneNumber;
         this.motelArea = motelArea;
-    }
-
-    public MotelNews(String motelName, String motelAddress) {
-        this.motelName = motelName;
-        this.motelAddress = motelAddress;
-    }
-
-    public MotelNews(String motelName, String motelAddress, int motelImage) {
-        this.motelName = motelName;
-        this.motelAddress = motelAddress;
-        this.motelImage = motelImage;
-    }
-
-    public MotelNews(int motelCost, String motelName, String motelAddress, String motelArea, String motelDetail, String timePosting, int motelImage) {
-        this.motelCost = motelCost;
-        this.motelName = motelName;
-        this.motelAddress = motelAddress;
-        this.motelArea = motelArea;
-        this.motelDetail = motelDetail;
         this.timePosting = timePosting;
-        this.motelImage = motelImage;
+        this.motelDetail = motelDetail;
     }
 
     public int getMotelCost() {
@@ -46,6 +34,14 @@ public class MotelNews implements Serializable {
 
     public void setMotelCost(int motelCost) {
         this.motelCost = motelCost;
+    }
+
+    public int getMotelImage() {
+        return motelImage;
+    }
+
+    public void setMotelImage(int motelImage) {
+        this.motelImage = motelImage;
     }
 
     public String getMotelName() {
@@ -64,20 +60,20 @@ public class MotelNews implements Serializable {
         this.motelAddress = motelAddress;
     }
 
-    public String getMoteArea() {
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getMotelArea() {
         return motelArea;
     }
 
-    public void setMoteArea(String moteArea) {
-        this.motelArea = moteArea;
-    }
-
-    public String getMotelDetail() {
-        return motelDetail;
-    }
-
-    public void setMotelDetail(String motelDetail) {
-        this.motelDetail = motelDetail;
+    public void setMotelArea(String motelArea) {
+        this.motelArea = motelArea;
     }
 
     public String getTimePosting() {
@@ -88,11 +84,11 @@ public class MotelNews implements Serializable {
         this.timePosting = timePosting;
     }
 
-    public int getMotelImage() {
-        return motelImage;
+    public String getMotelDetail() {
+        return motelDetail;
     }
 
-    public void setMotelImage(int motelImage) {
-        this.motelImage = motelImage;
+    public void setMotelDetail(String motelDetail) {
+        this.motelDetail = motelDetail;
     }
 }

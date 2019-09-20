@@ -58,7 +58,16 @@ public class MotelNewsAdapter extends ArrayAdapter<MotelNews> {
 
     private void goToDetailMotel(MotelNews motelNews) {
         Intent intent = new Intent(getContext(), DetailMotel.class);
-        motelNews = new MotelNews(motelNews.getMotelName(), motelNews.getMotelAddress(), motelNews.getMotelImage());
+        motelNews = new MotelNews(
+                motelNews.getMotelCost(),
+                motelNews.getMotelImage(),
+                motelNews.getMotelName(),
+                motelNews.getMotelAddress(),
+                motelNews.getPhoneNumber(),
+                motelNews.getMotelArea(),
+                motelNews.getTimePosting(),
+                motelNews.getMotelDetail()
+        );
         intent.putExtra("MotelDetail", motelNews);
         getContext().startActivity(intent);
     }

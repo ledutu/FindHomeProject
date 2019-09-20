@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -37,36 +38,27 @@ public class HomeFragment extends Fragment {
     }
 
     private void addData() {
-        arrMotelNews.add(new MotelNews("Phòng 1PN và 2PN tại Bành Văn Trân, Tân Bình",
-                "Phòng Cao Cấp Full Nội Thất 1PN và 2PN " +
-                        "NGAY GẦN NGÃ TƯ BẢY HIỀN " +
-                        "(149 Bành Văn Trân, P.7, Q.Tân Bình)" +
-                        "Phòng mới xây đang hoàn thiện nội thất ( Phòng Mới 100%), tháng 9 dọn vào ở. " +
-                        "Cho những ai thích căn phòng sang trọng ở khu vực trầm lắng yên bình.", arrImage[0]));
-        arrMotelNews.add(new MotelNews("Hoàng hoa thám còn hải phòng to co ban công",
-                "Con hai phòng to co ban công " +
-                        "Giơ giấc tư do " +
-                        "Loi đi riêng " +
-                        "Khu an ninh sạch sẽ " +
-                        "Sat chợ hoang hoa thám " +
-                        "Co the ở do 3-5n " +
-                        "Uu tiên nhân viên van phòng.hộ gia đình " +
-                        "Ai co nhu câu liên hê kim",
-                arrImage[2]));
-        arrMotelNews.add(new MotelNews("Phòng 1PN và 2PN tại Bành Văn Trân, Tân Bình",
-                "Phòng Cao Cấp Full Nội Thất 1PN và 2PN " +
-                        "NGAY GẦN NGÃ TƯ BẢY HIỀN " +
-                        "(149 Bành Văn Trân, P.7, Q.Tân Bình)" +
-                        "Phòng mới xây đang hoàn thiện nội thất ( Phòng Mới 100%), tháng 9 dọn vào ở. " +
-                        "Cho những ai thích căn phòng sang trọng ở khu vực trầm lắng yên bình.",
-                arrImage[3]));
-        arrMotelNews.add(new MotelNews("Phòng Đủ tiện nghi QUẬN 7",
-                "Cần cho thuê phòng đẹp, đủ tiện nghi cơ bản xách vali vào là ở " +
-                        "1.Nhà rất đẹp và ngay mặt dường hẻm xe hơi " +
-                        "-WC riêng " +
-                        "2. Phòng trang bị đầy đủ tiện nghi, nước nóng năng lượng mặt trời, giường, tủ, " +
-                        "máy lạnh, diện tích từ 20m2- 25m2 tuỳ lớn nhỏ",
-                arrImage[4]));
+        arrMotelNews.add(new MotelNews(
+                233333,
+                arrImage[1],
+                "Phòng trọ đặc biệt Lê Văn Lương",
+                "441/21 Lê Văn Lương Quận 7",
+                "0388037094 - A Tung",
+                "15 m2",
+                "1 ngày trước",
+                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+                ));
+
+        arrMotelNews.add(new MotelNews(
+                300000,
+                arrImage[0],
+                "Why do we use it?",
+                "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+                "0388037094 - C Tien",
+                "100 m2",
+                "10 ngày trước",
+                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+        ));
         motelNewsAdapter.notifyDataSetChanged();
     }
 
