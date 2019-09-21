@@ -17,6 +17,7 @@ import androidx.annotation.Nullable;
 import com.example.findhomeproject.R;
 import com.example.findhomeproject.intents.DetailMotel;
 import com.example.findhomeproject.modelForMotel.MotelNews;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -44,7 +45,7 @@ public class MotelNewsAdapter extends ArrayAdapter<MotelNews> {
         LinearLayout lyMotelNews = row.findViewById(R.id.lyMotelNews);
 
         final MotelNews motelNews = this.objects.get(position);
-        imgImage.setImageResource(motelNews.getMotelImage());
+        Picasso.get().load(motelNews.getMotelImage()).into(imgImage);
         txtTitle.setText(motelNews.getMotelName());
         txtContent.setText(motelNews.getMotelAddress());
         lyMotelNews.setOnClickListener(new View.OnClickListener() {
@@ -59,6 +60,7 @@ public class MotelNewsAdapter extends ArrayAdapter<MotelNews> {
     private void goToDetailMotel(MotelNews motelNews) {
         Intent intent = new Intent(getContext(), DetailMotel.class);
         motelNews = new MotelNews(
+                motelNews.getId(),
                 motelNews.getMotelCost(),
                 motelNews.getMotelImage(),
                 motelNews.getMotelName(),

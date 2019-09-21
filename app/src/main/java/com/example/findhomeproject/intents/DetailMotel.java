@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.example.findhomeproject.R;
 import com.example.findhomeproject.modelForMotel.MotelNews;
+import com.squareup.picasso.Picasso;
 
 public class DetailMotel extends AppCompatActivity {
 
@@ -39,7 +40,7 @@ public class DetailMotel extends AppCompatActivity {
         txtDetailContent = findViewById(R.id.txtDetailContent);
         Intent intent = getIntent();
         MotelNews motelNews = (MotelNews) intent.getSerializableExtra("MotelDetail");
-        imgImageSlider.setImageResource(motelNews.getMotelImage());
+        Picasso.get().load(motelNews.getMotelImage()).into(imgImageSlider);
         txtDetailName.setText(motelNews.getMotelName());
         txtDetailAddress.setText(motelNews.getMotelAddress());
         txtDetailPhone.setText(motelNews.getPhoneNumber());

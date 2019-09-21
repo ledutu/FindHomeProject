@@ -1,20 +1,34 @@
 package com.example.findhomeproject.ui.home;
 
+import android.app.ActionBar;
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import com.example.findhomeproject.R;
 import com.example.findhomeproject.adapter.MotelNewsAdapter;
 import com.example.findhomeproject.modelForMotel.MotelNews;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 
@@ -23,43 +37,70 @@ public class HomeFragment extends Fragment {
     ArrayList<MotelNews> arrMotelNews;
     MotelNewsAdapter motelNewsAdapter;
     ListView lvMotelNews;
-    private int[] arrImage = {R.drawable.image1, R.drawable.image2, R.drawable.image3, R.drawable.image4,
-            R.drawable.image5, R.drawable.image6};
+//    Toolbar tbHome;
+
+    DatabaseReference myRef;
+    FirebaseDatabase firebaseDatabase;
+    StorageReference storageReference;
+    ProgressDialog progressDialog;
+
+    public final static int Image_Request_Code = 10;
+    private Uri filePathUri;
+    private String Storage_Path = "MotelImage/";
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View home = inflater.inflate(R.layout.fragment_home, container, false);
+        addControls(home);
+        addEvents();
+
+        return home;
+    }
+
+
+
+    private void addEvents() {
+        myRef.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                MotelNews motelNews = dataSnapshot.getValue(MotelNews.class);
+                arrMotelNews.add(motelNews);
+                motelNewsAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private void addControls(View home) {
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        myRef = firebaseDatabase.getReference("motels");
         lvMotelNews = home.findViewById(R.id.lvMotelNews);
         arrMotelNews = new ArrayList<>();
         motelNewsAdapter = new MotelNewsAdapter(getActivity(), R.layout.item_motel_news, arrMotelNews);
         lvMotelNews.setAdapter(motelNewsAdapter);
-        addData();
-        return home;
-    }
+        progressDialog = new ProgressDialog(getActivity());
+       /* tbHome = home.findViewById(R.id.tbHome);
+        tbHome.setTitle("Nha tro 360");*/
 
-    private void addData() {
-        arrMotelNews.add(new MotelNews(
-                233333,
-                arrImage[1],
-                "Phòng trọ đặc biệt Lê Văn Lương",
-                "441/21 Lê Văn Lương Quận 7",
-                "0388037094 - A Tung",
-                "15 m2",
-                "1 ngày trước",
-                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
-                ));
-
-        arrMotelNews.add(new MotelNews(
-                300000,
-                arrImage[0],
-                "Why do we use it?",
-                "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
-                "0388037094 - C Tien",
-                "100 m2",
-                "10 ngày trước",
-                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
-        ));
-        motelNewsAdapter.notifyDataSetChanged();
     }
 
 

@@ -5,8 +5,9 @@ import android.media.Image;
 import java.io.Serializable;
 
 public class MotelNews implements Serializable {
-    private int motelCost;
-    private int motelImage;
+    private int id;
+    private String motelCost;
+    private String motelImage;
     private String motelName;
     private String motelAddress;
     private String phoneNumber;
@@ -17,7 +18,18 @@ public class MotelNews implements Serializable {
     public MotelNews() {
     }
 
-    public MotelNews(int motelCost, int motelImage, String motelName, String motelAddress, String phoneNumber, String motelArea, String timePosting, String motelDetail) {
+    public MotelNews(
+            int id,
+            String motelCost,
+            String motelImage,
+            String motelName,
+            String motelAddress,
+            String phoneNumber,
+            String motelArea,
+            String timePosting,
+            String motelDetail
+    ) {
+        this.id = id;
         this.motelCost = motelCost;
         this.motelImage = motelImage;
         this.motelName = motelName;
@@ -28,19 +40,27 @@ public class MotelNews implements Serializable {
         this.motelDetail = motelDetail;
     }
 
-    public int getMotelCost() {
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getMotelCost() {
         return motelCost;
     }
 
-    public void setMotelCost(int motelCost) {
+    public void setMotelCost(String motelCost) {
         this.motelCost = motelCost;
     }
 
-    public int getMotelImage() {
+    public String getMotelImage() {
         return motelImage;
     }
 
-    public void setMotelImage(int motelImage) {
+    public void setMotelImage(String motelImage) {
         this.motelImage = motelImage;
     }
 
