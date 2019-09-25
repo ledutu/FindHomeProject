@@ -1,8 +1,7 @@
 package com.example.findhomeproject.modelForMotel;
 
-import android.media.Image;
-
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class MotelNews implements Serializable {
     private int id;
@@ -14,6 +13,7 @@ public class MotelNews implements Serializable {
     private String motelArea;
     private String timePosting;
     private String motelDetail;
+    private int check;
 
     public MotelNews() {
     }
@@ -38,6 +38,14 @@ public class MotelNews implements Serializable {
         this.motelArea = motelArea;
         this.timePosting = timePosting;
         this.motelDetail = motelDetail;
+    };
+
+    public int getCheck() {
+        return check;
+    }
+
+    public void setCheck(int check) {
+        this.check = check;
     }
 
     public int getId() {

@@ -1,18 +1,15 @@
 package com.example.findhomeproject.ui.home;
 
-import android.app.ActionBar;
 import android.app.ProgressDialog;
-import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.AdapterView;
+import android.widget.ImageButton;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -21,13 +18,13 @@ import androidx.fragment.app.Fragment;
 
 import com.example.findhomeproject.R;
 import com.example.findhomeproject.adapter.MotelNewsAdapter;
+import com.example.findhomeproject.intents.MotelPosting;
 import com.example.findhomeproject.modelForMotel.MotelNews;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
@@ -44,28 +41,56 @@ public class HomeFragment extends Fragment {
     StorageReference storageReference;
     ProgressDialog progressDialog;
 
-    public final static int Image_Request_Code = 10;
-    private Uri filePathUri;
-    private String Storage_Path = "MotelImage/";
+    Toolbar toolbarHome;
+    ImageButton btnPostMotel, btnBackToChooseOption;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View home = inflater.inflate(R.layout.fragment_home, container, false);
         addControls(home);
         addEvents();
-
         return home;
     }
 
 
 
     private void addEvents() {
+        getDataFromFirebase();
+        btnPostMotel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onGoToMotelPostingActivity();
+            }
+        });
+
+        btnBackToChooseOption.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivity().finish();
+                arrMotelNews.clear();
+                Log.i("arr", String.valueOf(arrMotelNews));
+            }
+        });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+
+
+    }
+
+    private void getDataFromFirebase() {
+
         myRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 MotelNews motelNews = dataSnapshot.getValue(MotelNews.class);
+
                 arrMotelNews.add(motelNews);
                 motelNewsAdapter.notifyDataSetChanged();
+                progressDialog.dismiss();
             }
 
             @Override
@@ -90,7 +115,13 @@ public class HomeFragment extends Fragment {
         });
     }
 
+    private void onGoToMotelPostingActivity() {
+        Intent intent = new Intent(getActivity(), MotelPosting.class);
+        startActivity(intent);
+    }
+
     private void addControls(View home) {
+
         firebaseDatabase = FirebaseDatabase.getInstance();
         myRef = firebaseDatabase.getReference("motels");
         lvMotelNews = home.findViewById(R.id.lvMotelNews);
@@ -98,8 +129,11 @@ public class HomeFragment extends Fragment {
         motelNewsAdapter = new MotelNewsAdapter(getActivity(), R.layout.item_motel_news, arrMotelNews);
         lvMotelNews.setAdapter(motelNewsAdapter);
         progressDialog = new ProgressDialog(getActivity());
-       /* tbHome = home.findViewById(R.id.tbHome);
-        tbHome.setTitle("Nha tro 360");*/
+        toolbarHome = home.findViewById(R.id.toolbarHome);
+        btnPostMotel = home.findViewById(R.id.btnPostMotel);
+        btnBackToChooseOption = home.findViewById(R.id.btnBackToChooseOption);
+        progressDialog.setTitle("Đang tìm nhà. Chờ xíu!!");
+        progressDialog.show();
 
     }
 

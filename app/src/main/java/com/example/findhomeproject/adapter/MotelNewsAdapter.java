@@ -39,15 +39,17 @@ public class MotelNewsAdapter extends ArrayAdapter<MotelNews> {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         LayoutInflater inflater = this.context.getLayoutInflater();
         View row = inflater.inflate(this.resource, null);
-        TextView txtTitle = row.findViewById(R.id.txtTitle);
-        TextView txtContent = row.findViewById(R.id.txtContent);
+        TextView txtAddress = row.findViewById(R.id.txtAddress);
+        TextView txtArea = row.findViewById(R.id.txtArea);
         ImageView imgImage = row.findViewById(R.id.imgImage);
+        TextView txtMotelCost = row.findViewById(R.id.txtMotelCost);
         LinearLayout lyMotelNews = row.findViewById(R.id.lyMotelNews);
 
         final MotelNews motelNews = this.objects.get(position);
+        txtMotelCost.setText(motelNews.getMotelCost());
         Picasso.get().load(motelNews.getMotelImage()).into(imgImage);
-        txtTitle.setText(motelNews.getMotelName());
-        txtContent.setText(motelNews.getMotelAddress());
+        txtAddress.setText(motelNews.getMotelAddress());
+        txtArea.setText(motelNews.getMotelArea());
         lyMotelNews.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

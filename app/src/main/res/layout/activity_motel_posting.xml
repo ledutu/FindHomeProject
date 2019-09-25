@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".intents.MotelPosting"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbarHome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme"
+            android:backgroundTint="@color/colorWhite"
+            android:elevation="5dp">
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_cancel_black_36px"
+                style="@style/ImageButton"
+                android:id="@+id/btnCancel"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Đăng tin"
+                style="@style/TitleBar"/>
+            <ImageButton
+                style="@style/ImageButton"
+                android:layout_gravity="right"
+                android:src="@drawable/ic_check_black_36px"
+                android:id="@+id/btnPost"
+                android:layout_marginRight="10dp"/>
+        </androidx.appcompat.widget.Toolbar>
+
+        <TextView
+            style="@style/TextPosting"
+            android:text="Tiêu đề bài đăng"/>
+        <EditText
+            style="@style/EditTextPosting"
+            android:hint="Nhập tiêu đề bài đăng"
+            android:id="@+id/txtMotelPostingtitle"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="7"
+                style="@style/TextPosting"
+                android:text="Địa chỉ"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="4"
+                style="@style/TextPosting"
+                android:text="Chọn vị trí"
+                android:drawableLeft="@drawable/ic_location_black_24px"
+                android:drawableTint="@color/colorPrimary"
+                android:drawablePadding="5dp"
+                android:textColor="@color/colorPrimary"/>
+        </LinearLayout>
+
+        <EditText
+            style="@style/EditTextPosting"
+            android:hint="Nhập địa chỉ"
+            android:id="@+id/txtMotelPostingAddress"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:orientation="vertical">
+                <TextView
+                    style="@style/TextPosting"
+                    android:text="Giá phòng (VND)"/>
+
+                <EditText
+                    style="@style/EditTextPosting"
+                    android:hint="3000000"
+                    android:id="@+id/txtMotelPostingCost"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="5"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    style="@style/TextPosting"
+                    android:text="Diện tích (m2)"
+                    android:gravity="right"/>
+
+                <EditText
+                    style="@style/EditTextPosting"
+                    android:hint="20"
+                    android:id="@+id/txtMotelPostingArea"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <TextView
+            style="@style/TextPosting"
+            android:text="Liên hệ với chủ"/>
+
+        <EditText
+            style="@style/EditTextPosting"
+            android:hint="Tên của bạn"
+            android:id="@+id/txtMotelYourNamePosting"
+            />
+
+        <TextView
+            style="@style/TextPosting"
+            android:text="Số điện thoại (liên lạc)"/>
+
+        <EditText
+            style="@style/EditTextPosting"
+            android:hint="Nhập số điện thoại của bạn"
+            android:id="@+id/txtMotelYourPhonePosting"/>
+
+        <TextView
+            style="@style/TextPosting"
+            android:text="Mô tả chi tiết"/>
+        <EditText
+            style="@style/EditTextPosting"
+            android:layout_height="150dp"
+            android:id="@+id/txtMotelPostingDetail"
+            android:gravity="top"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="9"
+                android:drawableLeft="@drawable/ic_imageposting_black_24px"
+                style="@style/DrawableButton"
+                android:textSize="20dp"
+                android:text="Chọn ảnh"
+                android:id="@+id/btnChooseImage"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:layout_marginTop="7dp"
+                android:text="4/4"
+                android:layout_weight="1"
+                android:id="@+id/txtImageLimited"/>
+        </LinearLayout>
+
+<!--        <GridView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="400dp"-->
+<!--            android:layout_margin="10dp"-->
+<!--            android:id="@+id/gvImage"-->
+<!--            android:numColumns="2"-->
+<!--            android:paddingTop="10dp"/>-->
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="10dp"
+            android:scaleType="centerCrop"
+            android:id="@+id/gvImage"/>
+
+
+
+
+    </LinearLayout>
+
+
+
+</ScrollView>

@@ -6,6 +6,34 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarHome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        android:backgroundTint="@color/colorWhite"
+        android:elevation="5dp">
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_back_black_36px"
+            style="@style/ImageButton"
+            android:id="@+id/btnBackToChooseOption"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Easy Home"
+            style="@style/TitleBar"/>
+        <ImageButton
+            style="@style/ImageButton"
+            android:layout_gravity="right"
+            android:src="@drawable/ic_posting_black_36px"
+            android:id="@+id/btnPostMotel"
+            android:layout_marginRight="10dp"/>
+    </androidx.appcompat.widget.Toolbar>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -15,10 +43,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:drawableLeft="@drawable/ic_home_black_24dp"
-            android:text="Motel"
+            android:text="Phòng mời đăng"
             android:textSize="20dp"
             android:textStyle="bold"
-            android:layout_margin="5dp"/>
+            android:layout_marginTop="5dp"
+            android:layout_marginHorizontal="10dp"
+            style="@style/DrawableButton"
+            android:textColor="@color/colorPrimary"/>
 
         <ListView
             android:id="@+id/lvMotelNews"
