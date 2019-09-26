@@ -3,9 +3,81 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#f5f5f5"
-    >
+    android:background="#f5f5f5">
 
-    z
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="20dp">
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_image"
+            android:layout_width="wrap_content"
+            android:layout_height="160dp"
+            android:src="@drawable/tro2" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/txtNameAccount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="Le Tan"
+        android:textSize="30dp"
+        android:padding="10dp"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        >
+
+        <TextView
+            android:id="@+id/txtYouLive"
+            android:text="Nơi ở hiện nay:"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:layout_gravity="left|center_vertical"/>
+        <Spinner
+            android:id="@+id/spYouLive"
+            android:paddingLeft="40dp"
+            android:layout_gravity="right|center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:dropDownHeight="50dp"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnPhongDaDang"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="left|center_vertical"
+        android:text="Phòng đã đăng"
+        android:textSize="20dp"
+        android:paddingLeft="10dp"
+        android:textAllCaps="false"
+        android:background="#f5f5f5"
+        android:drawableRight="@drawable/ic_keyboard_arrow_right_24px"
+        android:drawableTint="@color/colorPrimary"
+        />
+    <Button
+        android:id="@+id/btnLogOut"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="left|center_vertical"
+        android:text="Đăng xuất"
+        android:textColor="#DA5044"
+        android:textSize="20dp"
+        android:paddingLeft="10dp"
+        android:textAllCaps="false"
+        android:background="#f5f5f5"
+        android:drawableRight="@drawable/ic_keyboard_arrow_right_24px"
+        android:drawableTint="@color/colorPrimary"
+        />
 
 </LinearLayout>
