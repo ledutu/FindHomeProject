@@ -41,7 +41,10 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class MotelPosting extends AppCompatActivity {
@@ -66,6 +69,9 @@ public class MotelPosting extends AppCompatActivity {
     public int id = 3;
 
     int PICK_IMAGE_MULTIPLE = 1;
+
+    String date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Calendar.getInstance().getTime());
+
 
 
 
@@ -156,7 +162,7 @@ public class MotelPosting extends AppCompatActivity {
                                             motelPostingAddress,
                                             phone,
                                             motelPostingArea,
-                                            "1 ngày trước",
+                                            date,
                                             motelPostingDetail
                                     );
 
