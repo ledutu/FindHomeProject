@@ -87,7 +87,6 @@ public class HomeFragment extends Fragment {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 MotelNews motelNews = dataSnapshot.getValue(MotelNews.class);
-
                 arrMotelNews.add(motelNews);
                 motelNewsAdapter.notifyDataSetChanged();
                 progressDialog.dismiss();

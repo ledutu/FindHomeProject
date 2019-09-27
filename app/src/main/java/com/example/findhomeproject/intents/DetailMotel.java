@@ -1,18 +1,37 @@
 package com.example.findhomeproject.intents;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.viewpager.widget.ViewPager;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.findhomeproject.R;
 import com.example.findhomeproject.modelForMotel.MotelNews;
+import com.example.findhomeproject.ui.account.AccountFragment;
+import com.example.findhomeproject.ui.favourite.FavouriteFragment;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
 public class DetailMotel extends AppCompatActivity {
@@ -23,7 +42,12 @@ public class DetailMotel extends AppCompatActivity {
 
     ImageButton btnBackToHome, btnAddToFavourite;
 
+    MotelNews motelNews;
 
+    ScrollView svDetailMotel;
+
+    DatabaseReference myRef;
+    FirebaseDatabase firebaseDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,10 +71,13 @@ public class DetailMotel extends AppCompatActivity {
         txtDetailContent = findViewById(R.id.txtDetailContent);
         btnBackToHome = findViewById(R.id.btnBackToHome);
         btnAddToFavourite = findViewById(R.id.btnAddToFavourite);
+        svDetailMotel = findViewById(R.id.svDetailMotel);
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        myRef = firebaseDatabase.getReference("motels");
 
         //init
         Intent intent = getIntent();
-        MotelNews motelNews = (MotelNews) intent.getSerializableExtra("MotelDetail");
+        motelNews = (MotelNews) intent.getSerializableExtra("MotelDetail");
         Picasso.get().load(motelNews.getMotelImage()).into(imgImageSlider);
         txtDetailName.setText(motelNews.getMotelName());
         txtDetailAddress.setText(motelNews.getMotelAddress());
@@ -74,8 +101,16 @@ public class DetailMotel extends AppCompatActivity {
         btnAddToFavourite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(DetailMotel.this, "Added", Toast.LENGTH_LONG).show();
+                addToFavourite();
+
             }
         });
+
+    }
+
+    private void addToFavourite() {
+
+        myRef.child("3").child("check").setValue(1);
+        Toast.makeText(DetailMotel.this, "Added", Toast.LENGTH_LONG).show();
     }
 }

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:paddingVertical="5dp"
+    android:paddingHorizontal="10dp">
+    <FrameLayout
+        android:layout_width="0dp"
+        android:layout_height="175dp"
+        android:layout_weight="4">
+        <TextView
+            android:layout_width="70dp"
+            android:layout_height="30dp"
+            android:background="@color/colorPrimary"
+            android:text="1,2 Trieu"
+            android:textColor="@color/colorWhite"
+            android:gravity="center"
+            android:id="@+id/txtMotelCostSaving"/>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/imgImageSaving"
+            android:scaleType="centerCrop"/>
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="6"
+        android:orientation="vertical"
+        android:layout_marginHorizontal="10dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtMotelSavingName"
+            android:text="Căn hộ cao cấp quận 3 ngay mặt tiền trường Đại học TÔn Đức Thắng"
+            android:textAllCaps="true"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:textSize="20dp"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold"
+            android:paddingBottom="5dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_location_black_24px"
+            android:drawableTint="@color/colorPrimary"
+            android:text="950 Trường Sa, Phường 13, Quận 13"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:id="@+id/txtMotelAddressSaving"
+            android:textSize="15dp"
+            android:drawablePadding="10dp"
+            android:paddingBottom="5dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_area_black_24px"
+            android:drawableTint="@color/colorPrimary"
+            android:text="Diện tích 30 m2"
+            android:id="@+id/txtMotelAreaSaving"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:textSize="15dp"
+            android:drawablePadding="10dp"
+            android:paddingBottom="5dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableTint="@color/colorPrimary"
+            android:drawableLeft="@drawable/ic_time_black_24px"
+            android:id="@+id/txtMotelTimeSaving"
+            android:text="12 days ago"
+            android:textSize="15dp"
+            android:drawablePadding="10dp"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>
