@@ -55,7 +55,7 @@ public class MotelPosting extends AppCompatActivity {
     ImageButton btnCancel, btnPost;
     EditText txtMotelPostingtitle, txtMotelPostingAddress,
             txtMotelPostingCost, txtMotelPostingArea, txtMotelYourNamePosting,
-            txtMotelYourPhonePosting, txtMotelPostingDetail;
+            txtMotelYourPhonePosting, txtMotelPostingDetail, txtKeyMotelAddress;
 
     TextView btnChooseImage, txtImageLimited;
     ImageView gvImage;
@@ -92,7 +92,7 @@ public class MotelPosting extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 id = (int) dataSnapshot.getChildrenCount();
-                Log.i("id", String.valueOf(id));
+                Log.i("id", String.valueOf(dataSnapshot.getKey()));
             }
 
             @Override
@@ -168,6 +168,7 @@ public class MotelPosting extends AppCompatActivity {
                                     String motelYourPhonePosting = txtMotelYourPhonePosting.getText().toString().trim();
                                     String motelPostingDetail = txtMotelPostingDetail.getText().toString().trim();
                                     String phone = motelYourPhonePosting + " - " + motelYourNamePosting;
+                                    String keyMotelAddress = txtKeyMotelAddress.getText().toString().trim().toLowerCase();
 
 
                                     @SuppressWarnings("VisibleForTests")
@@ -180,7 +181,8 @@ public class MotelPosting extends AppCompatActivity {
                                             phone,
                                             motelPostingArea,
                                             date,
-                                            motelPostingDetail
+                                            motelPostingDetail,
+                                            keyMotelAddress
                                     );
 
                                     myRef.child(String.valueOf(id)).setValue(imageUploadInfo);
@@ -343,6 +345,7 @@ public class MotelPosting extends AppCompatActivity {
         txtMotelYourNamePosting = findViewById(R.id.txtMotelYourNamePosting);
         txtMotelYourPhonePosting = findViewById(R.id.txtMotelYourPhonePosting);
         txtMotelPostingDetail = findViewById(R.id.txtMotelPostingDetail);
+        txtKeyMotelAddress = findViewById(R.id.txtKeyMotelAddress);
         btnChooseImage = findViewById(R.id.btnChooseImage);
         txtImageLimited = findViewById(R.id.txtImageLimited);
         gvImage = findViewById(R.id.gvImage);

@@ -53,6 +53,16 @@
             android:hint="Nhập tiêu đề bài đăng"
             android:id="@+id/txtMotelPostingtitle"
             android:inputType="text"/>
+
+        <TextView
+            style="@style/TextPosting"
+            android:text="Tên đường"/>
+        <EditText
+            style="@style/EditTextPosting"
+            android:hint="Nhập tên đường (Vd: Lê Văn Lương)"
+            android:id="@+id/txtKeyMotelAddress"
+            android:inputType="text"/>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

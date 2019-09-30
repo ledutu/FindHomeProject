@@ -42,7 +42,7 @@ public class MotelNews implements Serializable {
     };
 
     //add addressKey
-    public MotelNews(int id, String motelCost, String motelImage, String motelName, String motelAddress, String phoneNumber, String motelArea, String timePosting, String motelDetail, int check, String addressKey) {
+    public MotelNews(int id, String motelCost, String motelImage, String motelName, String motelAddress, String phoneNumber, String motelArea, String timePosting, String motelDetail, String addressKey) {
         this.id = id;
         this.motelCost = motelCost;
         this.motelImage = motelImage;

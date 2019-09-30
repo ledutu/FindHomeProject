@@ -58,8 +58,6 @@ public class DetailMotel extends AppCompatActivity {
 
     int check;
 
-    DecimalFormat costFormat;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -143,8 +141,5 @@ public class DetailMotel extends AppCompatActivity {
             myRef.child(String.valueOf(motelNews.getId())).child("check").setValue(1);
             Toast.makeText(DetailMotel.this, "Added from favourite", Toast.LENGTH_SHORT).show();
         }
-
-
-
     }
 }

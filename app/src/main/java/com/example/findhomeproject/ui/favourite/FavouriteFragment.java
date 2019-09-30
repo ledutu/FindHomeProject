@@ -3,6 +3,7 @@ package com.example.findhomeproject.ui.favourite;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -62,6 +63,7 @@ public class FavouriteFragment extends Fragment {
                 if (motelNews.getCheck() == 1) {
                     arrMotelNews.add(motelNews);
                     adapterMotelSaving.notifyDataSetChanged();
+                    Log.i("key", dataSnapshot.getKey());
                 }
 
                 progressDialog.dismiss();
