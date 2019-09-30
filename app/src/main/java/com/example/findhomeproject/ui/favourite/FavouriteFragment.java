@@ -45,6 +45,7 @@ public class FavouriteFragment extends Fragment {
         addControls(favourite);
         addEvents();
 
+
         return favourite;
     }
 
@@ -62,6 +63,7 @@ public class FavouriteFragment extends Fragment {
                     arrMotelNews.add(motelNews);
                     adapterMotelSaving.notifyDataSetChanged();
                 }
+
                 progressDialog.dismiss();
             }
 
@@ -85,6 +87,7 @@ public class FavouriteFragment extends Fragment {
 
             }
         });
+
     }
 
 
@@ -95,6 +98,7 @@ public class FavouriteFragment extends Fragment {
         lvMotelNews = favourite.findViewById(R.id.lvMotelNews);
         adapterMotelSaving = new AdapterMotelSaving(getActivity(), R.layout.item_motel_saving, arrMotelNews);
         lvMotelNews.setAdapter(adapterMotelSaving);
+
         progressDialog = new ProgressDialog(getActivity());
         progressDialog.setTitle("Đang load danh sách yêu thích, Chờ xíu!!!");
         progressDialog.show();

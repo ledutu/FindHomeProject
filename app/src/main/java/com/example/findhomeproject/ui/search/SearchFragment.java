@@ -14,7 +14,6 @@ import androidx.fragment.app.Fragment;
 
 import com.example.findhomeproject.R;
 import com.example.findhomeproject.adapter.AdapterMotelSaving;
-import com.example.findhomeproject.adapter.HistorySearchAdapter;
 import com.example.findhomeproject.modelForMotel.MotelNews;
 
 import java.util.ArrayList;
