@@ -18,7 +18,7 @@
             android:background="?attr/colorPrimary"
             android:minHeight="?attr/actionBarSize"
             android:theme="?attr/actionBarTheme"
-            android:backgroundTint="@color/colorWhite"
+            android:backgroundTint="@color/colorPrimary"
             android:elevation="5dp">
 
             <ImageButton
@@ -26,18 +26,23 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_cancel_black_36px"
                 style="@style/ImageButton"
-                android:id="@+id/btnCancel"/>
+                android:id="@+id/btnCancel"
+                android:backgroundTint="@color/colorPrimary"
+                android:tint="@color/colorWhite"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Đăng tin"
-                style="@style/TitleBar"/>
+                style="@style/TitleBar"
+                android:textColor="@color/colorWhite"/>
             <ImageButton
                 style="@style/ImageButton"
                 android:layout_gravity="right"
                 android:src="@drawable/ic_check_black_36px"
                 android:id="@+id/btnPost"
-                android:layout_marginRight="10dp"/>
+                android:layout_marginRight="10dp"
+                android:background="@color/colorPrimary"
+                android:tint="@color/colorWhite"/>
         </androidx.appcompat.widget.Toolbar>
 
         <TextView
@@ -46,7 +51,8 @@
         <EditText
             style="@style/EditTextPosting"
             android:hint="Nhập tiêu đề bài đăng"
-            android:id="@+id/txtMotelPostingtitle"/>
+            android:id="@+id/txtMotelPostingtitle"
+            android:inputType="text"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -70,7 +76,8 @@
         <EditText
             style="@style/EditTextPosting"
             android:hint="Nhập địa chỉ"
-            android:id="@+id/txtMotelPostingAddress"/>
+            android:id="@+id/txtMotelPostingAddress"
+            android:inputType="text"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -88,7 +95,8 @@
                 <EditText
                     style="@style/EditTextPosting"
                     android:hint="3000000"
-                    android:id="@+id/txtMotelPostingCost"/>
+                    android:id="@+id/txtMotelPostingCost"
+                    android:inputType="numberDecimal"/>
 
             </LinearLayout>
 
@@ -105,7 +113,8 @@
                 <EditText
                     style="@style/EditTextPosting"
                     android:hint="20"
-                    android:id="@+id/txtMotelPostingArea"/>
+                    android:id="@+id/txtMotelPostingArea"
+                    android:inputType="number"/>
             </LinearLayout>
 
         </LinearLayout>
@@ -118,7 +127,7 @@
             style="@style/EditTextPosting"
             android:hint="Tên của bạn"
             android:id="@+id/txtMotelYourNamePosting"
-            />
+            android:inputType="text"/>
 
         <TextView
             style="@style/TextPosting"
@@ -127,7 +136,8 @@
         <EditText
             style="@style/EditTextPosting"
             android:hint="Nhập số điện thoại của bạn"
-            android:id="@+id/txtMotelYourPhonePosting"/>
+            android:id="@+id/txtMotelYourPhonePosting"
+            android:inputType="phone"/>
 
         <TextView
             style="@style/TextPosting"
@@ -136,7 +146,8 @@
             style="@style/EditTextPosting"
             android:layout_height="150dp"
             android:id="@+id/txtMotelPostingDetail"
-            android:gravity="top"/>
+            android:gravity="top"
+            android:inputType="text"/>
 
         <LinearLayout
             android:layout_width="match_parent"

@@ -4,13 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:id="@+id/lyMotelNews"
-    android:padding="5dp">
+    android:id="@+id/lyMotelNews">
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:layout_marginHorizontal="5dp">
+        android:layout_marginHorizontal="5dp"
+        android:layout_marginTop="5dp">
         <ImageView
             android:id="@+id/imgImage"
             android:layout_width="match_parent"

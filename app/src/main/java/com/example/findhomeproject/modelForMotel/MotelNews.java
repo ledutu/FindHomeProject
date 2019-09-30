@@ -40,6 +40,19 @@ public class MotelNews implements Serializable {
         this.motelDetail = motelDetail;
     };
 
+    public MotelNews(int id, String motelCost, String motelImage, String motelName, String motelAddress, String phoneNumber, String motelArea, String timePosting, String motelDetail, int check) {
+        this.id = id;
+        this.motelCost = motelCost;
+        this.motelImage = motelImage;
+        this.motelName = motelName;
+        this.motelAddress = motelAddress;
+        this.phoneNumber = phoneNumber;
+        this.motelArea = motelArea;
+        this.timePosting = timePosting;
+        this.motelDetail = motelDetail;
+        this.check = check;
+    }
+
     public int getCheck() {
         return check;
     }

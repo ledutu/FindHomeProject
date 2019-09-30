@@ -22,23 +22,30 @@
             android:background="?attr/colorPrimary"
             android:minHeight="?attr/actionBarSize"
             android:theme="?attr/actionBarTheme"
-            android:backgroundTint="@color/colorWhite"
+            android:backgroundTint="@color/colorPrimary"
             android:elevation="5dp">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/TitleBar"
-                android:text="1.5 triệu/tháng"/>
+                android:text="1.5 triệu/tháng"
+                android:textColor="@color/colorWhite"
+                android:id="@+id/txtDetailMotelCosting"/>
 
             <ImageButton
                 android:src="@drawable/ic_back_black_36px"
                 style="@style/ImageButton"
-                android:id="@+id/btnBackToHome"/>
+                android:id="@+id/btnBackToHome"
+                android:backgroundTint="@color/colorPrimary"
+                android:tint="@color/colorWhite"/>
             <ImageButton
                 style="@style/ImageButton"
                 android:src="@drawable/ic_save_black_36px"
                 android:layout_gravity="right"
-                android:id="@+id/btnAddToFavourite"/>
+                android:layout_marginRight="10dp"
+                android:id="@+id/btnAddToFavourite"
+                android:backgroundTint="@color/colorPrimary"
+                android:tint="@color/colorWhite"/>
 
 
 

@@ -70,7 +70,8 @@ public class MotelNewsAdapter extends ArrayAdapter<MotelNews> {
                 motelNews.getPhoneNumber(),
                 motelNews.getMotelArea(),
                 motelNews.getTimePosting(),
-                motelNews.getMotelDetail()
+                motelNews.getMotelDetail(),
+                motelNews.getCheck()
         );
         intent.putExtra("MotelDetail", motelNews);
         getContext().startActivity(intent);

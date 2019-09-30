@@ -12,14 +12,15 @@
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
-        android:backgroundTint="@color/colorWhite"
+        android:backgroundTint="@color/colorPrimary"
         android:elevation="5dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Đã lưu"
-            style="@style/TitleBar"/>
+            style="@style/TitleBar"
+            android:textColor="@color/colorWhite"/>
 
     </androidx.appcompat.widget.Toolbar>
 

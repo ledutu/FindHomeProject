@@ -4,6 +4,7 @@
     <string name="title_search">Search</string>
     <string name="title_favourite">Favourite</string>
     <string name="title_account">Account</string>
+
     <string-array name="tinh_thanh">
         <item>An Giang</item>
         <item>Bà Rịa - Vũng Tàu</item>

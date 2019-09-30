@@ -1,65 +1,70 @@
 package com.example.findhomeproject.ui.search;
 
-import android.content.Context;
 import android.os.Bundle;
-import android.text.InputType;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
-import android.view.inputmethod.EditorInfo;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.example.findhomeproject.R;
+import com.example.findhomeproject.adapter.AdapterMotelSaving;
 import com.example.findhomeproject.adapter.HistorySearchAdapter;
+import com.example.findhomeproject.modelForMotel.MotelNews;
 
 import java.util.ArrayList;
 
 public class SearchFragment extends Fragment {
 
-    ArrayList<String> arrHistorySearch;
-    ListView lvHistorySearch;
-    HistorySearchAdapter historySearchAdapter;
+    ArrayList<MotelNews> arrMotels;
+    ListView lvSearch;
+    AdapterMotelSaving adapterMotelSaving;
+    ImageView btnSearch;
 
     EditText txtSearch;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_search, container, false);
-        arrHistorySearch = new ArrayList<>();
-        lvHistorySearch = root.findViewById(R.id.lvHistorySearch);
-        historySearchAdapter = new HistorySearchAdapter(getActivity(), R.layout.item_motel_news, arrHistorySearch);
-        lvHistorySearch.setAdapter(historySearchAdapter);
-        txtSearch = root.findViewById(R.id.txtSearch);
-
-        txtSearch.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
-                if (i == EditorInfo.IME_ACTION_SEARCH) {
-                    String s = textView.getText().toString();
-                    arrHistorySearch.add(s);
-                    historySearchAdapter.notifyDataSetChanged();
-                    textView.setText("");
-                    InputMethodManager imm = (InputMethodManager) textView.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-                    imm.hideSoftInputFromWindow(textView.getWindowToken(), 0);
-                    return true;
-                }
-                return false;
-            }
-        });
-
-
-
+        addControls(root);
+        addEvents();
 
         return root;
+    }
+
+    private void addEvents() {
+        btnSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                search();
+            }
+        });
+    }
+
+    private void search() {
+        String searchText = txtSearch.getText().toString();
+        if(searchText.isEmpty())
+        {
+            Toast.makeText(getActivity(), "Bạn chưa nhập địa điểm", Toast.LENGTH_SHORT).show();
+        }
+        else
+        {
+
+        }
+    }
+
+    private void addControls(View root) {
+        arrMotels = new ArrayList<>();
+        lvSearch= root.findViewById(R.id.lvSearch);
+        adapterMotelSaving= new AdapterMotelSaving(getActivity(), R.layout.item_motel_saving, arrMotels);
+        lvSearch.setAdapter(adapterMotelSaving);
+        txtSearch = root.findViewById(R.id.txtSearch);
+        btnSearch = root.findViewById(R.id.btnSearch);
     }
 
 

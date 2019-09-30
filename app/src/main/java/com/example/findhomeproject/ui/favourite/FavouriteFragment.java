@@ -62,10 +62,6 @@ public class FavouriteFragment extends Fragment {
                     arrMotelNews.add(motelNews);
                     adapterMotelSaving.notifyDataSetChanged();
                 }
-                if(arrMotelNews.size() == 0)
-                {
-                    Toast.makeText(getActivity(), "Chưa có thông tin nào được lưu", Toast.LENGTH_LONG).show();
-                }
                 progressDialog.dismiss();
             }
 

@@ -13,25 +13,22 @@
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
-        android:backgroundTint="@color/colorWhite"
+        android:backgroundTint="@color/colorPrimary"
         android:elevation="5dp">
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_back_black_36px"
-            style="@style/ImageButton"
-            android:id="@+id/btnBackToChooseOption"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Easy Home"
-            style="@style/TitleBar"/>
+            style="@style/TitleBar"
+            android:textColor="@color/colorWhite"/>
         <ImageButton
             style="@style/ImageButton"
             android:layout_gravity="right"
             android:src="@drawable/ic_posting_black_36px"
             android:id="@+id/btnPostMotel"
-            android:layout_marginRight="10dp"/>
+            android:layout_marginRight="10dp"
+            android:backgroundTint="@color/colorPrimary"
+            android:tint="@color/colorWhite"/>
     </androidx.appcompat.widget.Toolbar>
 
     <LinearLayout
@@ -47,7 +44,6 @@
             android:textSize="20dp"
             android:textStyle="bold"
             android:layout_marginTop="5dp"
-            android:layout_marginHorizontal="10dp"
             style="@style/DrawableButton"
             android:textColor="@color/colorPrimary"/>
 

@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
 
@@ -31,18 +32,16 @@ import java.util.ArrayList;
 
 public class HomeFragment extends Fragment {
 
-    ArrayList<MotelNews> arrMotelNews;
+    public ArrayList<MotelNews> arrMotelNews;
     MotelNewsAdapter motelNewsAdapter;
     ListView lvMotelNews;
-//    Toolbar tbHome;
 
     DatabaseReference myRef;
     FirebaseDatabase firebaseDatabase;
-    StorageReference storageReference;
     ProgressDialog progressDialog;
 
     Toolbar toolbarHome;
-    ImageButton btnPostMotel, btnBackToChooseOption;
+    ImageButton btnPostMotel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -63,21 +62,13 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        btnBackToChooseOption.setOnClickListener(new View.OnClickListener() {
+        lvMotelNews.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
-            public void onClick(View view) {
-                getActivity().finish();
-                arrMotelNews.clear();
-                Log.i("arr", String.valueOf(arrMotelNews));
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+                arrMotelNews.remove(i);
+                return false;
             }
         });
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-
-
 
     }
 
@@ -87,7 +78,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 MotelNews motelNews = dataSnapshot.getValue(MotelNews.class);
-                arrMotelNews.add(motelNews);
+                arrMotelNews.add(0, motelNews);
                 motelNewsAdapter.notifyDataSetChanged();
                 progressDialog.dismiss();
             }
@@ -130,7 +121,6 @@ public class HomeFragment extends Fragment {
         progressDialog = new ProgressDialog(getActivity());
         toolbarHome = home.findViewById(R.id.toolbarHome);
         btnPostMotel = home.findViewById(R.id.btnPostMotel);
-        btnBackToChooseOption = home.findViewById(R.id.btnBackToChooseOption);
         progressDialog.setTitle("Đang tìm nhà. Chờ xíu!!");
         progressDialog.show();
 

@@ -9,6 +9,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -22,6 +23,7 @@ import com.example.findhomeproject.R;
 import com.example.findhomeproject.modelForMotel.MotelNews;
 import com.example.findhomeproject.ui.account.AccountFragment;
 import com.example.findhomeproject.ui.favourite.FavouriteFragment;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
@@ -34,11 +36,16 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.util.ArrayList;
+import java.util.Iterator;
+
 public class DetailMotel extends AppCompatActivity {
 
     ImageView imgImageSlider;
     TextView txtDetailName, txtDetailAddress, txtDetailPhone, txtDetailArea,
-            txtDetailTime, txtDetailInformation, txtDetailContent;
+            txtDetailTime, txtDetailInformation, txtDetailContent, txtDetailMotelCosting;
 
     ImageButton btnBackToHome, btnAddToFavourite;
 
@@ -48,6 +55,10 @@ public class DetailMotel extends AppCompatActivity {
 
     DatabaseReference myRef;
     FirebaseDatabase firebaseDatabase;
+
+    int check;
+
+    DecimalFormat costFormat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,12 +83,13 @@ public class DetailMotel extends AppCompatActivity {
         btnBackToHome = findViewById(R.id.btnBackToHome);
         btnAddToFavourite = findViewById(R.id.btnAddToFavourite);
         svDetailMotel = findViewById(R.id.svDetailMotel);
+        txtDetailMotelCosting = findViewById(R.id.txtDetailMotelCosting);
         firebaseDatabase = FirebaseDatabase.getInstance();
         myRef = firebaseDatabase.getReference("motels");
 
         //init
-        Intent intent = getIntent();
-        motelNews = (MotelNews) intent.getSerializableExtra("MotelDetail");
+        Intent intentFromMotelNews = getIntent();
+        motelNews = (MotelNews) intentFromMotelNews.getSerializableExtra("MotelDetail");
         Picasso.get().load(motelNews.getMotelImage()).into(imgImageSlider);
         txtDetailName.setText(motelNews.getMotelName());
         txtDetailAddress.setText(motelNews.getMotelAddress());
@@ -85,12 +97,24 @@ public class DetailMotel extends AppCompatActivity {
         txtDetailArea.setText(motelNews.getMotelArea());
         txtDetailTime.setText(motelNews.getTimePosting());
         txtDetailContent.setText(motelNews.getMotelDetail());
+        txtDetailMotelCosting.setText(motelNews.getMotelCost());
+        check = motelNews.getCheck();
 
-
+        Intent intentFromMotelSaving = getIntent();
+        motelNews = (MotelNews) intentFromMotelSaving.getSerializableExtra("MotelDetail");
+        Picasso.get().load(motelNews.getMotelImage()).into(imgImageSlider);
+        txtDetailName.setText(motelNews.getMotelName());
+        txtDetailAddress.setText(motelNews.getMotelAddress());
+        txtDetailPhone.setText(motelNews.getPhoneNumber());
+        txtDetailArea.setText(motelNews.getMotelArea());
+        txtDetailTime.setText(motelNews.getTimePosting());
+        txtDetailContent.setText(motelNews.getMotelDetail());
+        txtDetailMotelCosting.setText(motelNews.getMotelCost());
+        check = motelNews.getCheck();
     }
 
-
     private void addEvents() {
+
         btnBackToHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -102,15 +126,25 @@ public class DetailMotel extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 addToFavourite();
-
             }
         });
 
     }
 
     private void addToFavourite() {
+        Log.i("check", String.valueOf(check));
+        if(check == 1)
+        {
+            myRef.child(String.valueOf(motelNews.getId())).child("check").setValue(0);
+            Toast.makeText(DetailMotel.this, "Deleted from favourite", Toast.LENGTH_SHORT).show();
+        }
+        else
+        {
+            myRef.child(String.valueOf(motelNews.getId())).child("check").setValue(1);
+            Toast.makeText(DetailMotel.this, "Added from favourite", Toast.LENGTH_SHORT).show();
+        }
 
-        myRef.child("3").child("check").setValue(1);
-        Toast.makeText(DetailMotel.this, "Added", Toast.LENGTH_LONG).show();
+
+
     }
 }

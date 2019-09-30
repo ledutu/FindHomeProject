@@ -33,8 +33,11 @@ import com.example.findhomeproject.ui.home.HomeFragment;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
@@ -66,7 +69,7 @@ public class MotelPosting extends AppCompatActivity {
     private Uri filePathUri;
     private String Storage_Path = "MotelImage/";
 
-    public int id = 3;
+    public int id;
 
     int PICK_IMAGE_MULTIPLE = 1;
 
@@ -85,10 +88,24 @@ public class MotelPosting extends AppCompatActivity {
     }
 
     private void addEvents() {
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                id = (int) dataSnapshot.getChildrenCount();
+                Log.i("id", String.valueOf(id));
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
         btnChooseImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 chooseImage();
+
             }
         });
         
@@ -142,7 +159,7 @@ public class MotelPosting extends AppCompatActivity {
                             task.addOnSuccessListener(new OnSuccessListener<Uri>() {
                                 @Override
                                 public void onSuccess(Uri uri) {
-                                    id++;
+
                                     String motelPostingTitle = txtMotelPostingtitle.getText().toString().trim();
                                     String motelPostingAddress = txtMotelPostingAddress.getText().toString().trim();
                                     String motelPostingCost = txtMotelPostingCost.getText().toString().trim();
@@ -166,9 +183,7 @@ public class MotelPosting extends AppCompatActivity {
                                             motelPostingDetail
                                     );
 
-                                    String imageUploadId = myRef.push().getKey();
-
-                                    myRef.child(imageUploadId).setValue(imageUploadInfo);
+                                    myRef.child(String.valueOf(id)).setValue(imageUploadInfo);
                                     finish();
                                 }
                             });
