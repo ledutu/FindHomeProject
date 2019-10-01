@@ -69,7 +69,7 @@
             android:orientation="horizontal">
             <TextView
                 android:layout_width="0dp"
-                android:layout_weight="7"
+                android:layout_weight="6"
                 style="@style/TextPosting"
                 android:text="Địa chỉ"/>
             <TextView
@@ -106,7 +106,7 @@
                     style="@style/EditTextPosting"
                     android:hint="3000000"
                     android:id="@+id/txtMotelPostingCost"
-                    android:inputType="numberDecimal"/>
+                    android:inputType="numberDecimal" />
 
             </LinearLayout>
 
@@ -154,10 +154,8 @@
             android:text="Mô tả chi tiết"/>
         <EditText
             style="@style/EditTextPosting"
-            android:layout_height="150dp"
             android:id="@+id/txtMotelPostingDetail"
-            android:gravity="top"
-            android:inputType="text"/>
+            android:inputType="textMultiLine"/>
 
         <LinearLayout
             android:layout_width="match_parent"

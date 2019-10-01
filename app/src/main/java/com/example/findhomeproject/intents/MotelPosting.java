@@ -33,6 +33,8 @@ import com.example.findhomeproject.ui.home.HomeFragment;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -64,6 +66,8 @@ public class MotelPosting extends AppCompatActivity {
     FirebaseDatabase firebaseDatabase;
     StorageReference storageReference;
     ProgressDialog progressDialog;
+
+    FirebaseUser firebaseUser;
 
     public final static int Image_Request_Code = 10;
     private Uri filePathUri;
@@ -163,13 +167,13 @@ public class MotelPosting extends AppCompatActivity {
                                     String motelPostingTitle = txtMotelPostingtitle.getText().toString().trim();
                                     String motelPostingAddress = txtMotelPostingAddress.getText().toString().trim();
                                     String motelPostingCost = txtMotelPostingCost.getText().toString().trim();
-                                    String motelPostingArea = txtMotelPostingArea.getText().toString().trim();
+                                    String motelPostingArea = txtMotelPostingArea.getText().toString().trim()+" m2";
                                     String motelYourNamePosting= txtMotelYourNamePosting.getText().toString().trim();
                                     String motelYourPhonePosting = txtMotelYourPhonePosting.getText().toString().trim();
                                     String motelPostingDetail = txtMotelPostingDetail.getText().toString().trim();
                                     String phone = motelYourPhonePosting + " - " + motelYourNamePosting;
                                     String keyMotelAddress = txtKeyMotelAddress.getText().toString().trim().toLowerCase();
-
+                                    String user = firebaseUser.getEmail().toLowerCase();
 
                                     @SuppressWarnings("VisibleForTests")
                                     MotelNews imageUploadInfo = new MotelNews(
@@ -182,7 +186,8 @@ public class MotelPosting extends AppCompatActivity {
                                             motelPostingArea,
                                             date,
                                             motelPostingDetail,
-                                            keyMotelAddress
+                                            keyMotelAddress,
+                                            user
                                     );
 
                                     myRef.child(String.valueOf(id)).setValue(imageUploadInfo);
@@ -353,5 +358,6 @@ public class MotelPosting extends AppCompatActivity {
         myRef = firebaseDatabase.getReference("motels");
         storageReference = FirebaseStorage.getInstance().getReference();
         progressDialog = new ProgressDialog(MotelPosting.this);
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
     }
 }

@@ -31,6 +31,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.findhomeproject.R;
 import com.example.findhomeproject.intents.Login;
+import com.example.findhomeproject.intents.MotelPosted;
 import com.example.findhomeproject.intents.MotelPosting;
 import com.example.findhomeproject.modelForMotel.MotelNews;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -66,7 +67,7 @@ public class AccountFragment extends Fragment {
     CircleImageView imgProfileImage;
     FirebaseUser user;
 
-    Button btnUpdateProfile, btnUpdateImage;
+    Button btnUpdateProfile, btnUpdateImage, btnPhongDaDang;
 
     ImageView btnEditNameAccount, btnEditPassword;
     public final int Image_Request_Code = 123;
@@ -112,6 +113,7 @@ public class AccountFragment extends Fragment {
         txtPassword = account.findViewById(R.id.txtPassWord);
         progressDialog = new ProgressDialog(getActivity());
         btnUpdateImage = account.findViewById(R.id.btnUpdateImage);
+        btnPhongDaDang = account.findViewById(R.id.btnPhongDaDang);
 
         storageReference = FirebaseStorage.getInstance().getReference();
 
@@ -157,7 +159,8 @@ public class AccountFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 FirebaseAuth.getInstance().signOut();
-                getActivity().finish();
+                Intent intent = new Intent(getActivity(), Login.class);
+                startActivity(intent);
             }
         });
 
@@ -196,6 +199,18 @@ public class AccountFragment extends Fragment {
             }
         });
 
+        btnPhongDaDang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goToMotelPosted();
+            }
+        });
+
+    }
+
+    private void goToMotelPosted() {
+        Intent intent = new Intent(getActivity(), MotelPosted.class);
+        startActivity(intent);
     }
 
     private void updatePassword() {

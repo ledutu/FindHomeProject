@@ -58,8 +58,7 @@ public class ForgotPassword extends AppCompatActivity {
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isSuccessful())
                 {
-                    Toast.makeText(ForgotPassword.this, "Kiểm tra email của bạn", Toast.LENGTH_SHORT).show();
-                    finish();
+                    Toast.makeText(ForgotPassword.this, "Reset thành công, hãy kiểm tra email của bạn", Toast.LENGTH_SHORT).show();
                 }
                 else
                 {

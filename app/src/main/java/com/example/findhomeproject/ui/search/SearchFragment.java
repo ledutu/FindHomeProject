@@ -42,9 +42,6 @@ public class SearchFragment extends Fragment {
     DatabaseReference myRef;
 
     EditText txtSearch;
-    private ProgressDialog progressDialog;
-
-    Handler handler;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -74,13 +71,6 @@ public class SearchFragment extends Fragment {
         }
         else
         {
-            /*handler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    progressDialog.dismiss();
-
-                }
-            },500);*/
             Query firebaseQuery = myRef.orderByChild("keyMotelAddress").startAt(searchText).endAt(searchText + "\uf8ff");
             queryFirebase(firebaseQuery);
         }
@@ -97,13 +87,11 @@ public class SearchFragment extends Fragment {
                 {
                     arrMotels.add(motelNews);
                     adapterMotelSaving.notifyDataSetChanged();
-                    progressDialog.dismiss();
 
                 }
                 else
                 {
                     Toast.makeText(getActivity(), "Không tìm thấy", Toast.LENGTH_SHORT).show();
-                    progressDialog.dismiss();
                 }
 
             }
@@ -139,8 +127,6 @@ public class SearchFragment extends Fragment {
         txtSearch = root.findViewById(R.id.txtSearch);
         btnSearch = root.findViewById(R.id.btnSearch);
         myRef = FirebaseDatabase.getInstance().getReference("motels");
-        progressDialog = new ProgressDialog(getActivity());
-        handler = new Handler();
     }
 
 

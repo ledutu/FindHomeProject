@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -30,12 +31,13 @@ public class FavouriteFragment extends Fragment {
 
     DatabaseReference myRef;
     FirebaseDatabase firebaseDatabase;
-    StorageReference storageReference;
     ProgressDialog progressDialog;
 
     ArrayList<MotelNews> arrMotelNews;
     ListView lvMotelNews;
     AdapterMotelSaving adapterMotelSaving;
+
+    TextView txtNoMotel;
 
 
 
@@ -65,6 +67,17 @@ public class FavouriteFragment extends Fragment {
                     adapterMotelSaving.notifyDataSetChanged();
                     Log.i("key", dataSnapshot.getKey());
                 }
+                if(arrMotelNews.size() != 0)
+                {
+                    lvMotelNews.setVisibility(View.VISIBLE);
+                    txtNoMotel.setVisibility(View.INVISIBLE);
+
+                }
+                else
+                {
+                    lvMotelNews.setVisibility(View.INVISIBLE);
+                    txtNoMotel.setVisibility(View.VISIBLE);
+                }
 
                 progressDialog.dismiss();
             }
@@ -90,6 +103,7 @@ public class FavouriteFragment extends Fragment {
             }
         });
 
+
     }
 
 
@@ -104,5 +118,7 @@ public class FavouriteFragment extends Fragment {
         progressDialog = new ProgressDialog(getActivity());
         progressDialog.setTitle("Đang load danh sách yêu thích, Chờ xíu!!!");
         progressDialog.show();
+        txtNoMotel = favourite.findViewById(R.id.txtNoMotel);
+
     }
 }

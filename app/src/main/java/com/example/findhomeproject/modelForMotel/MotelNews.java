@@ -14,7 +14,8 @@ public class MotelNews implements Serializable {
     private String timePosting;
     private String motelDetail;
     private int check;
-    private String addressKey;
+    private String keyMotelAddress;
+    private String user;
 
     public MotelNews() {
     }
@@ -41,8 +42,8 @@ public class MotelNews implements Serializable {
         this.motelDetail = motelDetail;
     };
 
-    //add addressKey
-    public MotelNews(int id, String motelCost, String motelImage, String motelName, String motelAddress, String phoneNumber, String motelArea, String timePosting, String motelDetail, String addressKey) {
+    //add User
+    public MotelNews(int id, String motelCost, String motelImage, String motelName, String motelAddress, String phoneNumber, String motelArea, String timePosting, String motelDetail, String keyMotelAddress, String user) {
         this.id = id;
         this.motelCost = motelCost;
         this.motelImage = motelImage;
@@ -52,8 +53,22 @@ public class MotelNews implements Serializable {
         this.motelArea = motelArea;
         this.timePosting = timePosting;
         this.motelDetail = motelDetail;
-        this.check = check;
-        this.addressKey = addressKey;
+        this.keyMotelAddress = keyMotelAddress;
+        this.user = user;
+    }
+
+    //add addressKey
+    public MotelNews(int id, String motelCost, String motelImage, String motelName, String motelAddress, String phoneNumber, String motelArea, String timePosting, String motelDetail, String keyMotelAddress) {
+        this.id = id;
+        this.motelCost = motelCost;
+        this.motelImage = motelImage;
+        this.motelName = motelName;
+        this.motelAddress = motelAddress;
+        this.phoneNumber = phoneNumber;
+        this.motelArea = motelArea;
+        this.timePosting = timePosting;
+        this.motelDetail = motelDetail;
+        this.keyMotelAddress = keyMotelAddress;
     }
 
     public MotelNews(int id, String motelCost, String motelImage, String motelName, String motelAddress, String phoneNumber, String motelArea, String timePosting, String motelDetail, int check) {
@@ -69,12 +84,20 @@ public class MotelNews implements Serializable {
         this.check = check;
     }
 
-    public String getAddressKey() {
-        return addressKey;
+    public String getUser() {
+        return user;
     }
 
-    public void setAddressKey(String addressKey) {
-        this.addressKey = addressKey;
+    public void setUser(String user) {
+        this.user = user;
+    }
+
+    public String getKeyMotelAddress() {
+        return keyMotelAddress;
+    }
+
+    public void setKeyMotelAddress(String keyMotelAddress) {
+        this.keyMotelAddress = keyMotelAddress;
     }
 
     public int getCheck() {
